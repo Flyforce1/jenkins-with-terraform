@@ -1,4 +1,9 @@
-properties([pipelineTriggers([cron('* * * * *')])])
+properties([
+    pipelineTriggers([cron('*/15 * * * *')])
+])
+
+
+
 
 node {
     stage("Clone A Repository") {
@@ -11,9 +16,11 @@ node {
         sh 'terraform plan'
     }
     stage("Apply"){
-        sh 'terraform apply -auto-approve'
+        //sh 'terraform apply -auto-approve'
+        sh 'running apply '
     }
     stage("Notification"){
         sh 'echo hello'
+        //slackSend channel: 'general', message: 'VPC has been built'
     }
 }
