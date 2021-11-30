@@ -33,6 +33,17 @@ node {
         //sh 'terraform apply -auto-approve'
         echo 'running apply '
     }
+    stage("Security Check"){
+        sh label: '', script: 
+		'''#!/bin/bash
+			if [ ! -d /tmp/foo ]; 
+			then
+				echo "Folder not found!"
+				echo "Creating a folder"
+				mkdir -p "/tmp/foo"
+			fi
+		'''
+    }
     stage("Notification"){
         sh 'echo hello'
         //slackSend channel: 'general', message: 'VPC has been built'
