@@ -16,7 +16,7 @@ node {
         sh 'terraform plan'
     }
     stage("Confirmation"){
-            input 'Should I apply?'
+        input 'Should I apply?'
     }
     stage("Apply"){
         //sh 'terraform apply -auto-approve'
