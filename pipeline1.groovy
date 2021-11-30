@@ -27,7 +27,8 @@ node {
         sh 'terraform plan'
     }
     stage("Confirmation"){
-        input 'Should I apply?'
+        //input 'Should I apply?'
+        echo "Hello"
     }
     stage("Apply"){
         //sh 'terraform apply -auto-approve'
@@ -43,6 +44,9 @@ node {
 				mkdir -p "/tmp/foo"
 			fi
 		'''
+    }
+    stage("Wait"){
+        sleep 10
     }
     stage("Notification"){
         sh 'echo hello'
