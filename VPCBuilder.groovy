@@ -1,6 +1,13 @@
 properties([
-    pipelineTriggers([cron('*/15 * * * *')])
+    buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')), 
+    pipelineTriggers([cron('*/15 * * * *'), 
+    pollSCM('* * * * *')])
 ])
+
+
+
+
+
 
 node {
     stage("Clone A Repository") {
