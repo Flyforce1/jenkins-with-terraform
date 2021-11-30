@@ -2,17 +2,19 @@ properties([
     pipelineTriggers([cron('*/15 * * * *')])
 ])
 
-
-
-
 node {
     stage("Clone A Repository") {
-        checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/farrukh90/jenkins-class-august.git']]])
+        timestamps {
+            checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/farrukh90/jenkins-class-august.git']]])
+        }
     }
     stage("Initialize"){
-        sh 'terraform init'
+        timestamps {
+            sh 'terraform init'
+        }
     }
     stage("Run Script"){
+        timestamps {
         sh label: '', script: 
 		'''#!/bin/bash
 			if [ ! -d /tmp/foo ]; 
@@ -22,6 +24,7 @@ node {
 				mkdir -p "/tmp/foo"
 			fi
 		'''
+        }
     }
     stage("Plan"){
         sh 'terraform plan'
