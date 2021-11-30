@@ -1,15 +1,8 @@
 node {
-
-stage("Stage1"){
-
-echo "hello"
-
-}
-
-stage("Stage2"){
-
-echo "hello"
-
-}
-
+    stage("Clone A Repository") {
+        echo "hello"
+    }
+    stage("Initialize"){
+        echo "hello"
+    }
 }
