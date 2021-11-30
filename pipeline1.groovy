@@ -5,4 +5,13 @@ node {
     stage("Initialize"){
         sh 'terraform init'
     }
+    stage("Plan"){
+        sh 'terraform plan'
+    }
+    stage("Apply"){
+        sh 'terraform apply -auto-approve'
+    }
+    stage("Notification"){
+        sh 'echo hello'
+    }
 }
