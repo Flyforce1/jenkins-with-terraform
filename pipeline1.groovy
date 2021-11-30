@@ -1,8 +1,8 @@
 node {
     stage("Clone A Repository") {
-        echo "hello"
+        git 'https://github.com/farrukh90/jenkins-class-august.git'
     }
     stage("Initialize"){
-        echo "hello"
+        sh 'terraform init'
     }
 }
