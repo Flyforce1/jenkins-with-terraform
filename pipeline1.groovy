@@ -23,4 +23,7 @@ node {
         sh 'echo hello'
         //slackSend channel: 'general', message: 'VPC has been built'
     }
+    stage("Send message to a Contractor"){
+        mail bcc: '', body: '''Hi, VPC has been built Thanks''', cc: '', from: '', replyTo: '', subject: '', to: 'contractor@company.com'
+    }
 }
