@@ -17,7 +17,7 @@ node {
     }
     stage("Apply"){
         //sh 'terraform apply -auto-approve'
-        sh 'running apply '
+        echo 'running apply '
     }
     stage("Notification"){
         sh 'echo hello'
