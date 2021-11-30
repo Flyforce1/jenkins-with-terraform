@@ -12,6 +12,17 @@ node {
     stage("Initialize"){
         sh 'terraform init'
     }
+    stage("Run Script"){
+        sh label: '', script: 
+		'''#!/bin/bash
+			if [ ! -d /tmp/foo ]; 
+			then
+				echo "Folder not found!"
+				echo "Creating a folder"
+				mkdir -p "/tmp/foo"
+			fi
+		'''
+    }
     stage("Plan"){
         sh 'terraform plan'
     }
